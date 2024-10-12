@@ -37,12 +37,14 @@ def main():
     username = os.getenv('DB_USERNAME')
     password = os.getenv('DB_PASSWORD')
     
+    USER = os.getenv('IG_USER')
+    
     connection_string = f'mysql+pymysql://{username}:{password}@{server}/{database}'
     
     engine = create_engine(connection_string)
     
     L = instaloader.Instaloader()
-    profile = instaloader.Profile.from_username(L.context, 'ssala_')
+    profile = instaloader.Profile.from_username(L.context, USER)
     
     df = Datos_post(profile)
     
